@@ -30,5 +30,6 @@ export default class ScrollSuave {
 
   init() {
     this.addLinkEvent();
+    return this;
   }
 }
