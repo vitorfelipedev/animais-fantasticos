@@ -1,20 +1,54 @@
-export default function initAnimacaoScroll() {
-  const sections = document.querySelectorAll('[data-anime="scroll"]');
-  const windowMetade = window.innerHeight * 0.6;
+export default class AnimacaoScroll {
+  constructor(section) {
+    this.sections = document.querySelectorAll(section);
+    this.windowMetade = window.innerHeight * 0.6;
+    this.checkDistance = this.checkDistance.bind(this);
+  }
 
-  function animaScroll() {
-    sections.forEach((section) => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const isSectionVisible = sectionTop - windowMetade < 0;
-      if (isSectionVisible) {
-        section.classList.add('ativo');
-      } else if (section.classList.contains('ativo')) {
-        section.classList.remove('ativo');
+  //Obtém a distância de cada item em relação ao topo
+  getDistance() {
+    this.distance = [...this.sections].map((section) => {
+      const offset = section.offsetTop;
+      return {
+        element: section,
+        offset: Math.floor(offset - this.windowMetade),
+      };
+    });
+  }
+
+  //Verifica distacia do objeto ao Scroll do site
+  checkDistance() {
+    this.distance.forEach((item) => {
+      if (window.pageYOffset > item.offset) {
+        item.element.classList.add('ativo');
+      } else if (item.element.classList.contains('ativo')) {
+        item.element.classList.remove('ativo');
       }
     });
   }
-  if (sections.length) {
-    animaScroll();
-    window.addEventListener('scroll', animaScroll);
+
+  addEventAnimacaoScroll() {
+    window.addEventListener('scroll', this.checkDistance);
+  }
+
+  addEventResize() {
+    window.addEventListener('resize', () => {
+      this.windowMetade = window.innerHeight * 0.6;
+    });
+  }
+
+  init() {
+    if (this.sections.length) {
+      this.getDistance();
+      this.checkDistance();
+      this.addEventAnimacaoScroll();
+      this.addEventResize();
+    }
+    return this;
+  }
+
+  //Remove o Event de Scroll
+  stop() {
+    window.removeEventListener('scroll', this.checkDistance);
   }
 }
