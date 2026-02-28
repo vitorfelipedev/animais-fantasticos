@@ -34,7 +34,7 @@ export default class AnimacaoScroll {
 
   addEventResize() {
     window.addEventListener('resize', () => {
-      this.windowMetade = window.innerHeight * 0.6;
+      this.windowMetade = debounce(window.innerHeight * 0.6, 50);
     });
   }
 
