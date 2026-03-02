@@ -11,11 +11,11 @@ export default class MenuMobile {
 
   openMenu(event) {
     event.preventDefault();
-    menuList.classList.toggle(this.activeClass);
-    menuButton.classList.toggle(this.activeClass);
-    outsideClick(menuList, events, () => {
-      menuList.classList.remove(this.activeClass);
-      menuButton.classList.remove(this.activeClass);
+    this.menuList.classList.toggle(this.activeClass);
+    this.menuButton.classList.toggle(this.activeClass);
+    outsideClick(this.menuList, this.events, () => {
+      this.menuList.classList.remove(this.activeClass);
+      this.menuButton.classList.remove(this.activeClass);
     });
   }
 
