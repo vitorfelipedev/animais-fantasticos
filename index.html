@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="./style.clean.css" />
   <script>document.documentElement.className += " js"</script>
 </head>
 
@@ -29,7 +29,7 @@
         </li>
         <li><a href="#faq">Faq</a></li>
         <li><a href="#contato">Contato</a></li>
-        <li><a data-modal="abrir" href="./login.html">Login →</a></li>
+        <li><a data-modal="abrir" href="./login.html">Login <span class="arrow-black"></span></a></li>
       </ul>
     </nav>
     <section class="grid-section animais" data-anime="scroll" id="animais">
@@ -177,7 +177,7 @@
 
   <section class="modal-container" data-modal="container">
     <div class="modal">
-      <button class="fechar" data-modal="fechar">X</button>
+      <button class="fechar" data-modal="fechar"></button>
       <form action=" ">
         <label for="email">Email</label>
         <input type="email" name="email" id="email">
