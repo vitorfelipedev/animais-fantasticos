@@ -9,6 +9,8 @@ import MenuMobile from './modules/menu-mobile.js';
 import fetchAnimais from './modules/fetch-animais.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
 import Funcionamento from './modules/funcionamento.js';
+import SlideNav from './modules/slide.js';
+
 const scrollSuave = new ScrollSuave('[data-menu="suave"] a[href^="#"]');
 scrollSuave.init();
 
@@ -43,3 +45,8 @@ const menuMobile = new MenuMobile('[data-menu="button"]', '[data-menu="list"]');
 menuMobile.init();
 const funcionamento = new Funcionamento('[data-semana]');
 funcionamento.init();
+
+const slide = new SlideNav('.slide', '.slide-wrapper');
+slide.init();
+
+slide.addControl('.custom-controls');
